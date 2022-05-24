@@ -1,12 +1,19 @@
-﻿function add(a, b) {
-    c = a + b;
-    return c;
-}
+﻿let calc = getCalcTool();
 
-function multiply(a, b) {
-    c = a * b;
-    return c;
-}
+if (calc(3, "+", 2) === 5) console.log("√");
+if (calc(3, "-", 2) === 1) console.log("√");
+if (calc(3, "*", 2) === 6) console.log("√");
+if (calc(3, "/", 2) === 1.5) console.log("√");
 
-result = add(multiply(36325, 9824), 777);
-alert(result);
+function getCalcTool() {
+    let local_math = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+        "/": (a, b) => a / b,
+        "*": (a, b) => a * b,
+    };
+
+    return function (a, operator, b) {
+        return local_math[operator](a, b);
+    }
+}
